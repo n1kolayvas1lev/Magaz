@@ -1,3 +1,5 @@
+import json
+
 from Goods import Good
 
 
@@ -20,6 +22,16 @@ class Category:
         self.goods.append(good)
         return self.goods
 
+    @staticmethod
+    def show_categories() -> dict:
+        """
+        Функция показа категорий товара для store_logic.py.
+        :return: dict
+        """
+        with open('Categories.json', 'r') as cdb:
+            categories = json.load(cdb)
+            return categories
+
     def __repr__(self) -> str:
         return f"{__class__.__name__}, {self.goods}"
 
@@ -39,4 +51,4 @@ if __name__ == '__main__':
     print(fruits)
     fruits.adding_goods(peach)
     print(fruits)
-
+    fruits.show_categories()

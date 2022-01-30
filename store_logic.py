@@ -11,13 +11,27 @@ class Store:
     def __init__(self):
         ...
 
-    def authentication(self) -> bool:
-        ...
+    @staticmethod
+    def authentication() -> bool:
+        """
+        Функция аутентификации пользователя.
+        :return: bool
+        """
+        if User.read_user():
+            print('Authentication passed.')
+            return True
+        return False
 
-    def show_catalogue(self):
-        ...
+    @staticmethod
+    def show_catalogue() -> dict:
+        """
+        Функция показа каталога категорий товара.
+        :return: dict
+        """
+        print(Category.show_categories())
 
-    def show_goods(self):
+    @staticmethod
+    def show_goods():
         ...
 
     @staticmethod
@@ -36,4 +50,5 @@ class Store:
 
 
 if __name__ == '__main__':
-    ...
+    alpha = Store()
+    alpha.show_catalogue()
