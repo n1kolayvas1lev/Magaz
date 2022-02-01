@@ -1,10 +1,12 @@
+import json
+
 from User import User
 
 from Category import Category
 
 from Basket import Basket
 
-from Goods import Good
+#from Goods import Good
 
 
 class Store:
@@ -17,13 +19,13 @@ class Store:
         Функция аутентификации пользователя.
         :return: bool
         """
-        if User.read_user():
+        if User.read_user:
             print('Authentication passed.')
             return True
         return False
 
     @staticmethod
-    def show_catalogue() -> dict:
+    def show_catalogue() -> None:
         """
         Функция показа каталога категорий товара.
         :return: dict
@@ -31,24 +33,50 @@ class Store:
         print(Category.show_categories())
 
     @staticmethod
-    def show_goods():
-        ...
+    def show_goods() -> None:
+        """
+        Показать содержимое каталогов.
+        :return: None
+        """
+        print('1 - фрукты, 2 - овощи')
+        category = int(input('Введите категорию: '))
+        if category == 1:
+            file = 'fruits.json'
+        if category == 2:
+            file = 'vegetables.json'
+        with open(file, 'r') as cat:
+            goods = json.load(cat)
+        print(goods)
 
     @staticmethod
-    def add_to_basket(good: Good):
-        Basket.adding_goods(good)
+    def add_to_basket(item: str):
+        Basket.adding_goods(item) #Почему не заполнен?
 
     @staticmethod
-    def remove_from_basket(good: Good):
-        Basket.removing_goods(good)
+    def remove_from_basket(item: str):
+        Basket.removing_goods(item) #Почему не заполнен?
 
-    def buy(self):
-        ...
+    @staticmethod
+    def buy():
+        price = Basket.average_price() #Почему не заполнен?
+        print(price)
+        income = int(input('Введите деньги.'))
+        while price != income:
+            print('Введите правильную сумму.')
+            income = int(input('Введите деньги.'))
+
+    @staticmethod
+    def show_basket():
+        print(Basket)
 
     def show_options(self):
-        print()
+        print(self.__dict__)
 
 
 if __name__ == '__main__':
     alpha = Store()
-    alpha.show_catalogue()
+    #alpha.authentication()
+    #alpha.show_catalogue()
+    #alpha.show_goods()
+    alpha.add_to_basket('Banana')
+    #alpha.show_basket()
