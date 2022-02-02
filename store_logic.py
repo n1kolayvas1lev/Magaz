@@ -49,28 +49,49 @@ class Store:
         print(goods)
 
     @staticmethod
-    def add_to_basket(item: str):
-        Basket.adding_goods(item) #Почему не заполнен?
+    def add_to_basket(item: str) -> None:
+        """
+        Должно добавлять в корзину товары по названию.
+        :param item: str
+        :return: None
+        """
+        Basket.adding_goods(item) #Почему не заполнен name?
 
     @staticmethod
-    def remove_from_basket(item: str):
-        Basket.removing_goods(item) #Почему не заполнен?
+    def remove_from_basket(item: str) -> None:
+        """
+        Должно удалять товары из корзины по названию.
+        :param item: str
+        :return: None
+        """
+        Basket.removing_goods(item) #Почему не заполнен name?
 
     @staticmethod
-    def buy():
-        price = Basket.average_price() #Почему не заполнен?
+    def buy() -> None:
+        """
+        Должно получать общий ценник корзины и требовать оплаты до победного.
+        :return: None
+        """
+        price = Basket.average_price
         print(price)
         income = int(input('Введите деньги.'))
         while price != income:
             print('Введите правильную сумму.')
             income = int(input('Введите деньги.'))
+        print('Оплачено.')
 
     @staticmethod
-    def show_basket():
+    def show_basket() -> None:
+        """
+        Функция показа содержимого корзины.
+        :return:
+        """
+        print(Basket.average_price)
         print(Basket)
 
-    def show_options(self):
-        print(self.__dict__)
+    @staticmethod
+    def show_options():
+        print('Аутентификация, Просмотр каталогов, Просмотр каталога, Добавить в корзину, Удалить из корзины, Посчитать сумму, Купить')
 
 
 if __name__ == '__main__':
@@ -78,5 +99,6 @@ if __name__ == '__main__':
     #alpha.authentication()
     #alpha.show_catalogue()
     #alpha.show_goods()
-    alpha.add_to_basket('Banana')
-    #alpha.show_basket()
+    # alpha.add_to_basket('Banana')
+    # alpha.show_basket()
+    alpha.show_options()

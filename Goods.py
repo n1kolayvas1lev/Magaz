@@ -31,7 +31,11 @@ class Good:
     #         goods = json.load(cat)
     #     return goods
 
-    def add_goods(self):
+    def add_goods(self) -> None:
+        """
+        Позволяет добавлять в файл соответствующей категории товары.
+        :return: None
+        """
         print('1 - фрукты, 2 - овощи')
         category = int(input('Введите категорию для добавления: '))
         if category == 1:
@@ -50,6 +54,11 @@ class Good:
 
     @staticmethod
     def return_good(name: str):
+        """
+        Считывает из файла товар по названию и выдаёт его в виде экземпляра класса Good.
+        :param name: str
+        :return: class Good
+        """
         with open('fruits.json', 'r') as fruits:
             fruits = json.load(fruits)
         with open('vegetables.json', 'r') as vegetables:
@@ -70,7 +79,11 @@ class Good:
             rating = vegetables.get(name)[1]
         return Good(name, price, rating)
 
-    def return_price(self):
+    def return_price(self) -> float:
+        """
+        Возвращает ценник конкретного товара.
+        :return: float
+        """
         return self.price
 
     def __repr__(self) -> str:
@@ -84,9 +97,9 @@ if __name__ == '__main__':
 
     a = Good()
     print(a.return_good("Apple"))
-    print(a.return_good("Potato"))
-    banana = Good('banana', 10.1, 5)
-    print(banana.return_price())
+    print(type(a.return_good("Potato")))
+    # banana = Good('banana', 10.1, 5)
+    # print(banana.return_price())
     # apple = Good('apple', 5.5, 4)
     # peach = Good('peach', 8, 2)
     #
