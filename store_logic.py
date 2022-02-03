@@ -72,7 +72,7 @@ class Store:
         Должно получать общий ценник корзины и требовать оплаты до победного.
         :return: None
         """
-        price = Basket.average_price
+        price = Basket.average_price()
         print(price)
         income = int(input('Введите деньги.'))
         while price != income:
@@ -86,8 +86,8 @@ class Store:
         Функция показа содержимого корзины.
         :return:
         """
-        print(Basket.average_price)
-        print(Basket)
+        print(Basket.average_price())
+        print(Basket())
 
     @staticmethod
     def show_options():
@@ -100,5 +100,6 @@ if __name__ == '__main__':
     #alpha.show_catalogue()
     #alpha.show_goods()
     # alpha.add_to_basket('Banana')
-    # alpha.show_basket()
+    alpha.show_basket()
     alpha.show_options()
+    alpha.buy()

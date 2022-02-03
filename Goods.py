@@ -40,8 +40,10 @@ class Good:
         category = int(input('Введите категорию для добавления: '))
         if category == 1:
             file = 'fruits.json'
-        if category == 2:
+        elif category == 2:
             file = 'vegetables.json'
+        else:
+            raise ValueError('Неверная категория.')
         with open(file, 'r') as cat:
             goods = json.load(cat)
         # self.deserialize()
@@ -70,13 +72,15 @@ class Good:
             # print(f"{__class__.__name__}, {self.name}, {self.price}, {self.rating}")
             price = fruits.get(name)[0]
             rating = fruits.get(name)[1]
-        if name in vegetables:
+        elif name in vegetables:
             # self.name = name
             # self.price = vegetables.get(name)[0]
             # self.rating = vegetables.get(name)[1]
             # print(f"{__class__.__name__}, {self.name}, {self.price}, {self.rating}")
             price = vegetables.get(name)[0]
             rating = vegetables.get(name)[1]
+        else:
+            raise ValueError('Указанного товара не существует.')
         return Good(name, price, rating)
 
     def return_price(self) -> float:
