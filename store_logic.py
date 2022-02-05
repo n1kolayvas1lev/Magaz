@@ -21,6 +21,7 @@ class Store:
         """
         if User.read_user:
             print('Authentication passed.')
+            user = User(None, None, basket=Basket)
             return True
         return False
 
@@ -48,23 +49,23 @@ class Store:
             goods = json.load(cat)
         print(goods)
 
-    @staticmethod
-    def add_to_basket(item: str) -> None:
-        """
-        Должно добавлять в корзину товары по названию.
-        :param item: str
-        :return: None
-        """
-        Basket.adding_goods(item) #Почему не заполнен name?
+    # @staticmethod
+    # def add_to_basket(item: str) -> None:
+    #     """
+    #     Должно добавлять в корзину товары по названию.
+    #     :param item: str
+    #     :return: None
+    #     """
+    #     User._basket.adding_goods(item) #Почему не заполнен name?
 
-    @staticmethod
-    def remove_from_basket(item: str) -> None:
-        """
-        Должно удалять товары из корзины по названию.
-        :param item: str
-        :return: None
-        """
-        Basket.removing_goods(item) #Почему не заполнен name?
+    # @staticmethod
+    # def remove_from_basket(item: str) -> None:
+    #     """
+    #     Должно удалять товары из корзины по названию.
+    #     :param item: str
+    #     :return: None
+    #     """
+    #     Basket.removing_goods(item) #Почему не заполнен name?
 
     @staticmethod
     def buy() -> None:
@@ -80,14 +81,14 @@ class Store:
             income = int(input('Введите деньги.'))
         print('Оплачено.')
 
-    @staticmethod
-    def show_basket() -> None:
-        """
-        Функция показа содержимого корзины.
-        :return:
-        """
-        print(Basket.average_price())
-        print(Basket())
+    # @staticmethod
+    # def show_basket() -> None:
+    #     """
+    #     Функция показа содержимого корзины.
+    #     :return:
+    #     """
+    #     print(Basket.average_price())
+    #     print(Basket())
 
     @staticmethod
     def show_options():

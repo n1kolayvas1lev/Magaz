@@ -23,7 +23,10 @@ class Basket:
         :param name: str
         :return: list
         """
-        self.basket.remove(Good.return_good(name))
+        for index in range(len(self.basket)):
+            if self.basket[index] == Good.return_good(name):
+                self.basket.pop(index)
+        # self.basket.remove(Good.return_good(name))
         return self.basket
 
     def average_price(self) -> float:
@@ -48,9 +51,10 @@ if __name__ == '__main__':
     alpha.adding_goods('Apple')
     print(alpha)
     alpha.adding_goods('Banana')
-    print(type(alpha))
-    #alpha.removing_goods('Banana')
-    # print(alpha)
+    print(alpha)
+    alpha.removing_goods('Banana')
+    print(alpha)
+
     # alpha.adding_goods('Potato')
     # print(alpha)
     # print(alpha.average_price())

@@ -17,7 +17,7 @@ class User:
     """
 
     def __init__(self, login: Optional['str'] = None, password: Optional['str'] = None,
-                 basket: Optional['Basket'] = None):
+                 basket: Basket):
         self._login = login
         self._password = password
 
@@ -36,6 +36,18 @@ class User:
         self.__users[self._login] = self._password
         with open('users.json', 'w') as udb:
             json.dump(self.__users, udb)
+
+    def add_to_basket(self, name: str) -> Basket:
+        self._basket.adding_goods(name)
+        return self._basket
+
+    def remove_from_basket(self, name: str) -> Basket:
+        self._basket.removing_goods(name)
+        return self._basket
+
+    @property
+    def get_basket(self):
+        return self._basket
 
     def read_user(self) -> bool:
         """
@@ -61,6 +73,8 @@ if __name__ == '__main__':
     # eric.add_user()
     # peter.save_user()
 
-    peter.read_user()
-    eric.read_user()
+    # peter.read_user()
+    # eric.read_user()
+    peter.add_to_basket('Banana')
+    print(peter.get_basket)
 
