@@ -4,10 +4,6 @@ from User import User
 
 from Category import Category
 
-from Basket import Basket
-
-#from Goods import Good
-
 
 class Store:
     def __init__(self):
@@ -85,8 +81,18 @@ class Store:
         print(self.user.get_basket.average_price())
 
     @staticmethod
-    def show_options():
-        print('Аутентификация, Просмотр каталогов, Просмотр каталога, Добавить в корзину, Удалить из корзины, Посчитать сумму, Купить')
+    def show_options() -> None:
+        """
+        Вывод на печать списка действий.
+        :return: None
+        """
+        print('Аутентификация,'
+              'Просмотр каталогов,'
+              'Просмотр каталога,'
+              'Добавить в корзину,'
+              'Удалить из корзины,'
+              'Посчитать сумму,'
+              'Купить')
 
 
 if __name__ == '__main__':

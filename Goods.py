@@ -19,18 +19,6 @@ class Good:
         self.price = price
         self.rating = rating
 
-    # @staticmethod
-    # def deserialize():
-    #     print('1 - фрукты, 2 - овощи')
-    #     category = int(input('Введите категорию для добавления: '))
-    #     if category == 1:
-    #         file = 'fruits.json'
-    #     if category == 2:
-    #         file = 'vegetables.json'
-    #     with open(file, 'r') as cat:
-    #         goods = json.load(cat)
-    #     return goods
-
     def add_goods(self) -> None:
         """
         Позволяет добавлять в файл соответствующей категории товары.
@@ -66,17 +54,9 @@ class Good:
         with open('vegetables.json', 'r') as vegetables:
             vegetables = json.load(vegetables)
         if name in fruits:
-            # self.name = name
-            # self.price = fruits.get(name)[0]
-            # self.rating = fruits.get(name)[1]
-            # print(f"{__class__.__name__}, {self.name}, {self.price}, {self.rating}")
             price = fruits.get(name)[0]
             rating = fruits.get(name)[1]
         elif name in vegetables:
-            # self.name = name
-            # self.price = vegetables.get(name)[0]
-            # self.rating = vegetables.get(name)[1]
-            # print(f"{__class__.__name__}, {self.name}, {self.price}, {self.rating}")
             price = vegetables.get(name)[0]
             rating = vegetables.get(name)[1]
         else:

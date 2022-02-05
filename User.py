@@ -37,15 +37,29 @@ class User:
             json.dump(self.__users, udb)
 
     def add_to_basket(self, name: str) -> Basket:
+        """
+        Добавление товара в корзину по наименованию.
+        :param name: str
+        :return: Basket
+        """
         self._basket.adding_goods(name)
         return self._basket
 
     def remove_from_basket(self, name: str) -> Basket:
+        """
+        Удаление товара из корзины по наименованию.
+        :param name: str
+        :return: Basket
+        """
         self._basket.removing_goods(name)
         return self._basket
 
     @property
-    def get_basket(self):
+    def get_basket(self) -> Basket:
+        """
+        Получение содержимого корзины на вывод.
+        :return: Basket
+        """
         return self._basket
 
     def read_user(self) -> bool:
@@ -76,4 +90,3 @@ if __name__ == '__main__':
     # eric.read_user()
     peter.add_to_basket('Banana')
     print(peter.get_basket)
-
