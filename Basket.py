@@ -19,12 +19,12 @@ class Basket:
 
     def removing_goods(self, name: str) -> list:
         """
-        Должно удалять продукты из корзины, хз почему не работает.
+        Удаляет продукты из корзины.
         :param name: str
         :return: list
         """
         for index in range(len(self.basket)):
-            if self.basket[index] == Good.return_good(name):
+            if self.basket[index].name == name:
                 self.basket.pop(index)
         # self.basket.remove(Good.return_good(name))
         return self.basket
@@ -43,7 +43,7 @@ class Basket:
         return f"{__class__.__name__}, {self.basket}"
 
     def __str__(self) -> str:
-        return f"{[print(good) for good in self.basket]}"
+        return f"{[good for good in self.basket]}"
 
 
 if __name__ == '__main__':

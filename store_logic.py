@@ -11,17 +11,15 @@ from Basket import Basket
 
 class Store:
     def __init__(self):
-        ...
+        self.user = User()
 
-    @staticmethod
-    def authentication() -> bool:
+    def authentication(self) -> bool:
         """
         Функция аутентификации пользователя.
         :return: bool
         """
-        if User.read_user:
+        if self.user.read_user():
             print('Authentication passed.')
-            user = User(None, None, basket=Basket)
             return True
         return False
 
@@ -49,46 +47,42 @@ class Store:
             goods = json.load(cat)
         print(goods)
 
-    # @staticmethod
-    # def add_to_basket(item: str) -> None:
-    #     """
-    #     Должно добавлять в корзину товары по названию.
-    #     :param item: str
-    #     :return: None
-    #     """
-    #     User._basket.adding_goods(item) #Почему не заполнен name?
+    def add_to_basket(self, item: str) -> None:
+        """
+        Должно добавлять в корзину товары по названию.
+        :param item: str
+        :return: None
+        """
+        self.user.get_basket.adding_goods(item)
 
-    # @staticmethod
-    # def remove_from_basket(item: str) -> None:
-    #     """
-    #     Должно удалять товары из корзины по названию.
-    #     :param item: str
-    #     :return: None
-    #     """
-    #     Basket.removing_goods(item) #Почему не заполнен name?
+    def remove_from_basket(self, item: str) -> None:
+        """
+        Должно удалять товары из корзины по названию.
+        :param item: str
+        :return: None
+        """
+        self.user.get_basket.removing_goods(item)
 
-    @staticmethod
-    def buy() -> None:
+    def buy(self) -> None:
         """
         Должно получать общий ценник корзины и требовать оплаты до победного.
         :return: None
         """
-        price = Basket.average_price()
+        price = self.user.get_basket.average_price()
         print(price)
-        income = int(input('Введите деньги.'))
+        income = float(input('Введите деньги.'))
         while price != income:
             print('Введите правильную сумму.')
-            income = int(input('Введите деньги.'))
+            income = float(input('Введите деньги.'))
         print('Оплачено.')
 
-    # @staticmethod
-    # def show_basket() -> None:
-    #     """
-    #     Функция показа содержимого корзины.
-    #     :return:
-    #     """
-    #     print(Basket.average_price())
-    #     print(Basket())
+    def show_basket(self) -> None:
+        """
+        Функция показа содержимого корзины.
+        :return:
+        """
+        print(self.user.get_basket)
+        print(self.user.get_basket.average_price())
 
     @staticmethod
     def show_options():
@@ -97,10 +91,10 @@ class Store:
 
 if __name__ == '__main__':
     alpha = Store()
-    #alpha.authentication()
-    #alpha.show_catalogue()
-    #alpha.show_goods()
-    # alpha.add_to_basket('Banana')
+    alpha.show_options()  # 6. Перечисление содержащее значения для перечисленных операций.
+    alpha.authentication()  # 1. Аутентификация пользователя.
+    alpha.show_catalogue()  # 2. Просмотр списка каталогов товаров.
+    alpha.show_goods()  # 3. Просмотр списка товаров определенного каталога.
+    alpha.add_to_basket('Banana')  # 4. Выбор товара в корзину.
     alpha.show_basket()
-    alpha.show_options()
-    alpha.buy()
+    alpha.buy()  # 5. Покупка товаров, находящихся в корзине.

@@ -16,12 +16,11 @@ class User:
     read_user: Авторизовать П.
     """
 
-    def __init__(self, login: Optional['str'] = None, password: Optional['str'] = None,
-                 basket: Basket):
+    def __init__(self, login: Optional['str'] = None, password: Optional['str'] = None):
         self._login = login
         self._password = password
 
-        self._basket = basket
+        self._basket = Basket()
         self.__users = {}
 
     def add_user(self) -> None:
@@ -67,13 +66,13 @@ class User:
 
 if __name__ == '__main__':
     peter = User()
-    eric = User()
+    # eric = User()
     # peter = User('Peter', '123')
     # peter.add_user()
     # eric.add_user()
     # peter.save_user()
 
-    # peter.read_user()
+    peter.read_user()
     # eric.read_user()
     peter.add_to_basket('Banana')
     print(peter.get_basket)
